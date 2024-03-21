@@ -45,6 +45,7 @@ window.onload = function(){
     appleEmployees = employees.filter(employee => employee.position === 'Software' || employee.position === 'Hardware');
     // 6 do Microsoft vlozte pouze zamestnance s pozicí Marketing nebo zamestnance s mestem zacinajicím na San
     microsoftEmployees = employees.filter(employee => employee.position === 'Marketing' || employee.city.startsWith('San'));
+      
     // 7 firmy vlozte do pole 
     let companies = [
       { name: 'Meta', employees: metaEmployees },
