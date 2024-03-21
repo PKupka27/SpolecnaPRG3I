@@ -34,7 +34,6 @@ window.onload = function(){
       let Meta = new Firma("Meta", "Adresa Meta");
       let Apple = new Firma("Apple", "Adresa Apple");
       let Microsoft = new Firma("Microsoft", "Adresa Microsoft");
-      let firmy = [Meta, Apple, Microsoft];
  
       // 4 Do firmy Meta vlozte zamestnance s pozicí Software a věkem do 50 let
       employees.forEach(employee => {
@@ -49,9 +48,17 @@ window.onload = function(){
             Apple.zamestnanci.push(employee);
         }
       });
-      
+
       // 6 do Microsoft vlozte pouze zamestnance s pozicí Marketing nebo zamestnance s mestem zacinajicím na San
-      // 7 firmy vlozte do pole 
+      employees.forEach(employee => {
+        if (employee.position === 'Marketing' || employee.city.startsWith('San')) {
+            Microsoft.zamestnanci.push(employee);
+        }
+      });
+
+      // 7 firmy vlozte do pole
+      
+
       // 8 projdete cyklem vsechny firmy a vypiste jejich zamestnance do console
       // 9 pushnete do spolecne repo do vetve pod svym jménem    
 }
