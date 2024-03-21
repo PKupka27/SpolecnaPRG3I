@@ -44,6 +44,7 @@ window.onload = function(){
     // 6 do Microsoft vlozte pouze zamestnance s pozicí Marketing nebo zamestnance s mestem zacinajicím na San
     Microsoft = employees.filter(employee => employee.position === 'Marketing' || employee.city.startsWith('San'));
     // 7 firmy vlozte do pole 
+    let companies = [Meta, Apple, Microsoft];
     // 8 projdete cyklem vsechny firmy a vypiste jejich zamestnance do console
     // 9 pushnete do spolecne repo do vetve pod svym jménem 
 
