@@ -35,4 +35,4 @@ window.onload = function(){
     // 8 projdete cyklem vsechny firmy a vypiste jejich zamestnance do console
     // 9 pushnete do spolecne repo do vetve pod svym jménem 
 
-}
+}ne
