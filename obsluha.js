@@ -44,6 +44,11 @@ window.onload = function(){
     });
 
     // 5 Do Apple vlozte zamestnance s pozicí Software nebo Hardware
+
+    employees.filter(employee => employee.position === 'Software' || employee.position === 'Hardware').forEach(employee => {
+      apple.addEmployee(employee);
+    });
+
     // 6 do Microsoft vlozte pouze zamestnance s pozicí Marketing nebo zamestnance s mestem zacinajicím na San
     // 7 firmy vlozte do pole 
     // 8 projdete cyklem vsechny firmy a vypiste jejich zamestnance do console
