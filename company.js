@@ -5,7 +5,4 @@ class Firma {
         this.address = address;
         this.zamestnanci = [];
     }
-
-whwh
-
 }
