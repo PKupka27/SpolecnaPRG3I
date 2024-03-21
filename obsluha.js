@@ -36,8 +36,13 @@ window.onload = function(){
     let apple = new Company("Apple");
     let microsoft = new Company("Microsoft");
 
-    // vse pomoci cyklů, filtrů apod.
+    // vše pomoci cyklů, filtrů apod.
     // 4 Do firmy Meta vlozte zamestnance s pozicí Software a věkem do 50 let 
+
+    employees.filter(employee => employee.position === 'Software' && employee.age <= 50).forEach(employee => {
+      meta.addEmployee(employee);
+    });
+
     // 5 Do Apple vlozte zamestnance s pozicí Software nebo Hardware
     // 6 do Microsoft vlozte pouze zamestnance s pozicí Marketing nebo zamestnance s mestem zacinajicím na San
     // 7 firmy vlozte do pole 
