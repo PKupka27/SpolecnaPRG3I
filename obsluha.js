@@ -35,7 +35,7 @@ window.onload = function(){
     let metaEmployees = [];
     let appleEmployees = [];
     let microsoftEmployees = [];
-
+   
     // vse pomoci cyklů, filtrů apod.
     // 4 Do firmy Meta vlozte zamestnance s pozicí Software a věkem do 50 let 
     metaEmployees = employees.filter(employee => employee.position === 'Software' && employee.age <= 50);
