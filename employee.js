@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 class Employee {
     
     constructor(name, age, city) {
@@ -19,4 +18,3 @@ class Employee {
     }
 
 }
->>>>>>> a3f3d0dcb1b558f13991ed58a23fb7a7798ce454
