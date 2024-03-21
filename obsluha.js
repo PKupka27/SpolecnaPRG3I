@@ -25,6 +25,8 @@ window.onload = function(){
         employees.push(newEmployee);
       });
       // 2. Vypiste do konzole pouze zamestnance kteří mají věk nad třicet
+      let nadtricetiletyemployees = employees.filter(employee => employee.age > 30);
+      console.log(nadtricetiletyemployees);
       // 3 Vytvorte tri firmy Meta, Apple, Microsoft
       // vse pomoci cyklů, filtrů apod.
       // 4 Do firmy Meta vlozte zamestnance s pozicí Software a věkem do 50 let 
