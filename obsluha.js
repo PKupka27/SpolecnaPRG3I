@@ -32,6 +32,12 @@ window.onload = function(){
 
 
     // 3 Vytvorte tri firmy Meta, Apple, Microsoft
+    let companies = [];
+    let meta = { name: 'Meta', employees : [] };
+    let apple = { name: 'Apple', employees: [] };
+    let microsoft = { name: 'Microsoft', employees: [] };
+
+    companies.push(meta, apple, microsoft);
 
 
     // vse pomoci cyklů, filtrů apod.
