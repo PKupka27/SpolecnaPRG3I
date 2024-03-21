@@ -31,6 +31,9 @@ window.onload = function(){
 
 
     // 3 Vytvorte tri firmy Meta, Apple, Microsoft
+    let Meta = [];
+    let Apple = [];
+    let Microsoft = [];
 
 
     // vse pomoci cyklů, filtrů apod.
