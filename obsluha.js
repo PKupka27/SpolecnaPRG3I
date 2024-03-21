@@ -52,6 +52,5 @@ window.onload = function(){
           console.log(employee);
       });
   });
-e
   // 9. pushnete do spolecne repo do vetve pod svym jménem 
 }
