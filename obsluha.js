@@ -52,7 +52,7 @@ window.onload = function(){
       { name: 'Apple', employees: appleEmployees },
       { name: 'Microsoft', employees: microsoftEmployees }
   ];
-
+  
     // 8 projdete cyklem vsechny firmy a vypiste jejich zamestnance do console
     companies.forEach(company => {
       console.log(`Zamestnanci ve firme ${company.name}:`);
