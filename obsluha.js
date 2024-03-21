@@ -19,6 +19,10 @@ window.onload = function(){
       // 1. pomocí foreach cyklu na persons poli, 
       // do pole employees vytvorte nove zamestnance pomoci new Employee
     let employees = [];
+    persons.forEach(person => {
+        let employee = new Employee(person.id, person.name, person.age, person.city, person.position);
+        employees.push(employee);
+    });
 
 
     // 2. Vypiste do konzole pouze zamestnance kteří mají věk nad třicet
@@ -35,4 +39,4 @@ window.onload = function(){
     // 8 projdete cyklem vsechny firmy a vypiste jejich zamestnance do console
     // 9 pushnete do spolecne repo do vetve pod svym jménem 
 
-}ne
+}
