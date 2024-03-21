@@ -30,7 +30,7 @@ window.onload = function(){
     console.log("Zamestnanci starsi nez 30 let:");
     let employeesOverThirty = employees.filter(employee => employee.age > 30);
     employeesOverThirty.forEach(employee => console.log(employee));
-
+   
     // 3 Vytvorte tri firmy Meta, Apple, Microsoft
     let metaEmployees = [];
     let appleEmployees = [];
