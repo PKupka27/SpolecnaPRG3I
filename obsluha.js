@@ -20,7 +20,7 @@ window.onload = function(){
       // do pole employees vytvorte nove zamestnance pomoci new Employee
     let employees = [];
       for(let person of persons) {
-      let employee = new Employee(person);
+      let employee = new employee(person);
       employees.push(employee);
 }
 
@@ -33,16 +33,22 @@ window.onload = function(){
 
     // 3 Vytvorte tri firmy Meta, Apple, Microsoft
     let companies = [];
-    let meta = { name: 'Meta', employees : [] };
+    let meta = { name: 'Meta', employees: [] };
     let apple = { name: 'Apple', employees: [] };
     let microsoft = { name: 'Microsoft', employees: [] };
-
     companies.push(meta, apple, microsoft);
+
+   
 
 
     // vse pomoci cyklů, filtrů apod.
+
     // 4 Do firmy Meta vlozte zamestnance s pozicí Software a věkem do 50 let 
+    let metaEmployees = employees.filter(employee => employee.position === 'Software' && employee.age <= 50);
+    meta.employees = metaEmployees;
     // 5 Do Apple vlozte zamestnance s pozicí Software nebo Hardware
+    let appleEmployees = employees.filter(employee => employee.position === 'Software' || employee.position === 'Hardware');
+    apple.employees = appleEmployees;
     // 6 do Microsoft vlozte pouze zamestnance s pozicí Marketing nebo zamestnance s mestem zacinajicím na San
     // 7 firmy vlozte do pole 
     // 8 projdete cyklem vsechny firmy a vypiste jejich zamestnance do console
