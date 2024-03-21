@@ -24,12 +24,19 @@ window.onload = function(){
         let newEmployee = new Employee(person.name, person.age, person.city);
         employees.push(newEmployee);
       });
+
       // 2. Vypiste do konzole pouze zamestnance kteří mají věk nad třicet
       let nadtricetiletyemployees = employees.filter(employee => employee.age > 30);
       console.log(nadtricetiletyemployees);
+
       // 3 Vytvorte tri firmy Meta, Apple, Microsoft
       // vse pomoci cyklů, filtrů apod.
-      // 4 Do firmy Meta vlozte zamestnance s pozicí Software a věkem do 50 let 
+      let Meta = new Firma("Meta", "Adresa Meta");
+      let Apple = new Firma("Apple", "Adresa Apple");
+      let Microsoft = new Firma("Microsoft", "Adresa Microsoft");
+      let firmy = [Meta, Apple, Microsoft];
+ 
+      // 4 Do firmy Meta vlozte zamestnance s pozicí Software a věkem do 50 let
       // 5 Do Apple vlozte zamestnance s pozicí Software nebo Hardware
       // 6 do Microsoft vlozte pouze zamestnance s pozicí Marketing nebo zamestnance s mestem zacinajicím na San
       // 7 firmy vlozte do pole 
