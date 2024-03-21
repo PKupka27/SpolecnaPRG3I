@@ -41,7 +41,7 @@ window.onload = function(){
     metaEmployees = employees.filter(employee => employee.position === 'Software' && employee.age <= 50);
       
     // 5 Do Apple vlozte zamestnance s pozicí Software nebo Hardware
-     
+       
     appleEmployees = employees.filter(employee => employee.position === 'Software' || employee.position === 'Hardware');
     // 6 do Microsoft vlozte pouze zamestnance s pozicí Marketing nebo zamestnance s mestem zacinajicím na San
     microsoftEmployees = employees.filter(employee => employee.position === 'Marketing' || employee.city.startsWith('San'));
