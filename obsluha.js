@@ -66,7 +66,8 @@ window.onload = function(){
       company.employees.forEach(employee => {
           console.log(employee);
       });
-
+    });
+    
     // 9 pushnete do spolecne repo do vetve pod svym jménem 
 
 }
