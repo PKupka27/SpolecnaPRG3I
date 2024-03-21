@@ -26,6 +26,8 @@ window.onload = function(){
 
 
     // 2. Vypiste do konzole pouze zamestnance kteří mají věk nad třicet
+    let employeesAboveThirty = employees.filter(employee => employee.age > 30);
+    console.log(employeesAboveThirty);
 
 
     // 3 Vytvorte tri firmy Meta, Apple, Microsoft
