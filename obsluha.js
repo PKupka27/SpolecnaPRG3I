@@ -57,3 +57,4 @@ window.onload = function(){
 
 }
 
+//pls ne pětku :D
