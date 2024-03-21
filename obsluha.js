@@ -1,5 +1,4 @@
-window.onload = function(){ 
-VYLIŽ MI ČŮRÁKA DEBILE KURVA
+window.onload = function(){
     let persons = [
         { id: 1, name: 'John', age: 30, city: 'New York', position:  'Software'},
         { id: 2, name: 'Alice', age: 25, city: 'San Francisco', position:  'Software' },
@@ -25,6 +24,10 @@ VYLIŽ MI ČŮRÁKA DEBILE KURVA
 
 
     // 3 Vytvorte tri firmy Meta, Apple, Microsoft
+const meta = new Firma("Meta")
+const apple = new Firma("Apple")
+const microsoft = new Firma("Microsoft")
+
 
 
     // vse pomoci cyklů, filtrů apod.
