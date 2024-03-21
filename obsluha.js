@@ -19,20 +19,38 @@ window.onload = function(){
       // 1. pomocí foreach cyklu na persons poli, 
       // do pole employees vytvorte nove zamestnance pomoci new Employee
     let employees = [];
+    persons.forEach(person => {
+        let employee = new Employee(person.id, person.name, person.age, person.city, person.position);
+        employees.push(employee);
+    });
 
 
     // 2. Vypiste do konzole pouze zamestnance kteří mají věk nad třicet
+    let employeesAboveThirty = employees.filter(employee => employee.age > 30);
+    console.log(employeesAboveThirty);
 
 
     // 3 Vytvorte tri firmy Meta, Apple, Microsoft
+    const meta = new Firma("Meta")
+    const apple = new Firma("Apple")
+    const microsoft = new Firma("Microsoft")
 
 
     // vse pomoci cyklů, filtrů apod.
     // 4 Do firmy Meta vlozte zamestnance s pozicí Software a věkem do 50 let 
+    Meta = employees.filter(employee => employee.position === 'Software' && employee.age <= 50);
     // 5 Do Apple vlozte zamestnance s pozicí Software nebo Hardware
+    Apple = employees.filter(employee => employee.position === 'Software' || employee.position === 'Hardware');
     // 6 do Microsoft vlozte pouze zamestnance s pozicí Marketing nebo zamestnance s mestem zacinajicím na San
+    Microsoft = employees.filter(employee => employee.position === 'Marketing' || employee.city.startsWith('San'));
     // 7 firmy vlozte do pole 
+    let companies = [meta, apple, microsoft];
     // 8 projdete cyklem vsechny firmy a vypiste jejich zamestnance do console
-    // 9 pushnete do spolecne repo do vetve pod svym jménem 
-
+    companies.forEach(company => {
+      console.log(`Company Employees:`);
+      company.forEach(employee => {
+          console.log(employee);
+      });
+  });
+  // 9. pushnete do spolecne repo do vetve pod svym jménem 
 }
