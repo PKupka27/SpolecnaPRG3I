@@ -6,6 +6,6 @@ class Firma {
         this.zamestnanci = [];
     }
 
-
+whwh
 
 }
