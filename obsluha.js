@@ -17,7 +17,7 @@ window.onload = function(){
   // do pole employees vytvorte nove zamestnance pomoci new Employee
   let employees = [];
   for(let person of persons) {
-      let employee = new Employee(person);
+      let employee = new employee(person);
       employees.push(employee);
   }
 
