@@ -20,16 +20,17 @@ window.onload = function(){
     let employees = [];
     persons.forEach(person => { 
       let employee = new Employee(person.id, person.name, person.age, person.city, person.position);
-      employees.push(employee)})
+      employees.push(employee)
+    })
 
 
     // 2. Vypiste do konzole pouze zamestnance kteří mají věk nad třicet
 
 
     // 3 Vytvorte tri firmy Meta, Apple, Microsoft
-    const meta = new Firma(meta.name = "Meta")
-    const apple = new Firma(apple.name = "Apple")
-    const microsoft = new Firma(microsoft.name = "Microsoft")
+    let meta = new Firma("Meta")
+    let apple = new Firma("Apple")
+    let microsoft = new Firma("Microsoft")
 
 
 
@@ -39,7 +40,7 @@ window.onload = function(){
     // 5 Do Apple vlozte zamestnance s pozicí Software nebo Hardware
     apple = employees.filter(employee => employee.position == "Software" || employee.position == "Hardware");
     // 6 do Microsoft vlozte pouze zamestnance s pozicí Marketing nebo zamestnance s mestem zacinajicím na San
-    microsoft = employees.filter(employee => employee.position == "Marketing" || employee.city.starsWith("San"));
+    microsoft = employees.filter(employee => employee.position == "Marketing" || employee.city.startsWith("San"));
     // 7 firmy vlozte do pole 
     let companies = [meta, apple, microsoft];
     // 8 projdete cyklem vsechny firmy a vypiste jejich zamestnance do console
