@@ -50,6 +50,8 @@ window.onload = function(){
     let appleEmployees = employees.filter(employee => employee.position === 'Software' || employee.position === 'Hardware');
     apple.employees = appleEmployees;
     // 6 do Microsoft vlozte pouze zamestnance s pozicí Marketing nebo zamestnance s mestem zacinajicím na San
+    let microsoftEmployees = employees.filter(employee => employee.position === 'Marketing' || employee.city.startsWith('San'));
+    microsoft.employees = microsoftEmployees;
     // 7 firmy vlozte do pole 
     // 8 projdete cyklem vsechny firmy a vypiste jejich zamestnance do console
     // 9 pushnete do spolecne repo do vetve pod svym jménem 
