@@ -58,6 +58,7 @@ window.onload = function(){
       console.log(`Zamestnanci ve firme ${company.name}:`);
       company.employees.forEach(employee => console.log(employee));
   });
+    
     // 9 pushnete do spolecne repo do vetve pod svym jménem 
 
 }
