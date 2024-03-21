@@ -17,22 +17,45 @@ window.onload = function(){
       // po kazdem bodě commitněte do gitu
 
       // 1. pomocí foreach cyklu na persons poli, 
+
       // do pole employees vytvorte nove zamestnance pomoci new Employee
     let employees = [];
+    persons.forEach(person => {
+      let employee = new Employee(person.id, person.name, person.age, person.city, person.position);
+      employees.push(employee);
+  });
 
 
     // 2. Vypiste do konzole pouze zamestnance kteří mají věk nad třicet
-
+    console.log("Zamestnanci starsi nez 30 let:");
+    let employeesOverThirty = employees.filter(employee => employee.age > 30);
+    employeesOverThirty.forEach(employee => console.log(employee));
+    
 
     // 3 Vytvorte tri firmy Meta, Apple, Microsoft
-
+    let metaEmployees = [];
+    let appleEmployees = [];
+    let microsoftEmployees = [];
 
     // vse pomoci cyklů, filtrů apod.
     // 4 Do firmy Meta vlozte zamestnance s pozicí Software a věkem do 50 let 
+    metaEmployees = employees.filter(employee => employee.position === 'Software' && employee.age <= 50);
     // 5 Do Apple vlozte zamestnance s pozicí Software nebo Hardware
+    appleEmployees = employees.filter(employee => employee.position === 'Software' || employee.position === 'Hardware');
     // 6 do Microsoft vlozte pouze zamestnance s pozicí Marketing nebo zamestnance s mestem zacinajicím na San
+    microsoftEmployees = employees.filter(employee => employee.position === 'Marketing' || employee.city.startsWith('San'));
     // 7 firmy vlozte do pole 
+    let companies = [
+      { name: 'Meta', employees: metaEmployees },
+      { name: 'Apple', employees: appleEmployees },
+      { name: 'Microsoft', employees: microsoftEmployees }
+  ];
+
     // 8 projdete cyklem vsechny firmy a vypiste jejich zamestnance do console
+    companies.forEach(company => {
+      console.log(`Zamestnanci ve firme ${company.name}:`);
+      company.employees.forEach(employee => console.log(employee));
+  });
     // 9 pushnete do spolecne repo do vetve pod svym jménem 
 
 }
