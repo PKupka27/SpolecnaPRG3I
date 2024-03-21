@@ -60,5 +60,13 @@ window.onload = function(){
       let firmy = [Meta, Apple, Microsoft];
 
       // 8 projdete cyklem vsechny firmy a vypiste jejich zamestnance do console
+      firmy.forEach(firma => {
+        console.log(`Zaměstnanci firmy ${firma.name}:`);
+        firma.zamestnanci.forEach(zamestnanec => {
+            console.log(`- ${zamestnanec.name}, ${zamestnanec.age} let, ${zamestnanec.position}, ${zamestnanec.city}`);
+        });
+        console.log(); // Oddělení jednotlivých firem prázdným řádkem
+      });
+      
       // 9 pushnete do spolecne repo do vetve pod svym jménem    
 }
