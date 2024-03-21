@@ -67,6 +67,8 @@ window.onload = function(){
         });
         console.log(); // Oddělení jednotlivých firem prázdným řádkem
       });
-      
+
       // 9 pushnete do spolecne repo do vetve pod svym jménem    
 }
+
+//test1
