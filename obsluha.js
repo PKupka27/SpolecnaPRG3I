@@ -1,5 +1,5 @@
 window.onload = function(){ 
-
+VYLIŽ MI ČŮRÁKA DEBILE KURVA
     let persons = [
         { id: 1, name: 'John', age: 30, city: 'New York', position:  'Software'},
         { id: 2, name: 'Alice', age: 25, city: 'San Francisco', position:  'Software' },
