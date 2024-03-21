@@ -45,8 +45,8 @@ window.onload = function(){
     // 8 projdete cyklem vsechny firmy a vypiste jejich zamestnance do console
     companies.forEach(company => {
       console.log("Zaměstnanci firmy", microsoft.name,":")
-      
-    })
+      company.forEach(employee => (
+        console.log(employee)
+      ))})
     // 9 pushnete do spolecne repo do vetve pod svym jménem 
-
 }
