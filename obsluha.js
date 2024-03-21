@@ -23,9 +23,9 @@ window.onload = function(){
     persons.forEach(person => {
       let employee = new Employee(person.id, person.name, person.age, person.city, person.position);
       employees.push(employee);
-  });
+    });
 
-
+  
     // 2. Vypiste do konzole pouze zamestnance kteří mají věk nad třicet
     console.log("Zamestnanci starsi nez 30 let:");
     let employeesOverThirty = employees.filter(employee => employee.age > 30);
