@@ -32,6 +32,9 @@ window.onload = function(){
 
     // 3 Vytvorte tri firmy Meta, Apple, Microsoft
 
+    let meta = new Company("Meta");
+    let apple = new Company("Apple");
+    let microsoft = new Company("Microsoft");
 
     // vse pomoci cyklů, filtrů apod.
     // 4 Do firmy Meta vlozte zamestnance s pozicí Software a věkem do 50 let 
