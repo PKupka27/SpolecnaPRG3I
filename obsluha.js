@@ -57,8 +57,11 @@ window.onload = function(){
     employees.filter(employee => employee.position === 'Marketing' || employee.city.startsWith('San')).forEach(employee => {
       microsoft.addEmployee(employee);
     });
-    
+
     // 7 firmy vlozte do pole 
+
+    let companies = [meta, apple, microsoft];
+    
     // 8 projdete cyklem vsechny firmy a vypiste jejich zamestnance do console
     // 9 pushnete do spolecne repo do vetve pod svym jménem 
 
