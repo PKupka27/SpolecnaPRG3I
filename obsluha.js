@@ -70,6 +70,3 @@ window.onload = function(){
 
       // 9 pushnete do spolecne repo do vetve pod svym jménem    
 }
-
-//test1
-//test2
