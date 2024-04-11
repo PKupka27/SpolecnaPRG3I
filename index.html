@@ -1,13 +1,68 @@
 <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Prohlížeč pokémonů</title>
 
-<html lang="cs-cz">
-    <head>
-        <meta charset="utf-8" />
-        <title>První webová aplikace v JavaScriptu</title>
-        <script src="company.js"></script>
-        <script src="employee.js"></script>
-        <script src="obsluha.js"></script>
-        </head>
-    <body>
-    </body>
+		<link rel="stylesheet" href="styles.css">
+	</head>
+
+	<body>
+		<div id="pokemon-container">
+			<div id="poke-seznam"></div>
+			<div id="pokemon-detail"></div>
+		</div>
+
+		<script>
+			let apiUrl = "https://pokeapi.co/api/v2/";
+			
+			function stahniJSON(url, callback)
+			{
+				let xhr = new XMLHttpRequest();
+				xhr.onload = () => {
+					callback(JSON.parse(xhr.response));
+				}
+				xhr.open("GET", url);
+				xhr.send();
+			}
+			
+			
+			function loadList(url)
+			{
+				let seznam_div = document.getElementById("poke-seznam");
+				seznam_div.innerHTML = "<ul id='poke-seznam-ul'></ul>";
+				let seznam_ul = document.getElementById("poke-seznam-ul");
+			
+				stahniJSON(url, (data) => {
+					for (let pokemon of data.results)
+					{
+						let novaPolozka = document.createElement("li");
+						novaPolozka.innerText = pokemon.name;
+						seznam_ul.appendChild(novaPolozka);
+						let poke_url = pokemon.url;
+						novaPolozka.addEventListener("click", () => loadPokemon(poke_url));
+					}
+				});
+			}
+			
+			function loadPokemon(url)
+			{
+				let detaily_div = document.getElementById("pokemon-detail");
+				stahniJSON(url, (data) => {
+					let html = `
+						<img src="${data.sprites.back_default}" />
+						<ul>
+							<li>Název: ${data.name}</li>
+							<li>Výška: ${data.height}</li>
+							<li>Váha: ${data.weight}</li>
+						</ul>
+					`;
+			
+					detaily_div.innerHTML = html;
+				});
+			}
+			
+			loadList(apiUrl + "pokemon");
+		</script>
+	</body>
 </html>

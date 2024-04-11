@@ -1,0 +1,25 @@
+#pokemon-container {
+    display: flex;
+}
+
+#pokemon-detail {
+    text-align: center;
+    margin-left: 10px;
+}
+
+#pokemon-container ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#poke-seznam li {
+    padding: 5px 20px;
+    background-color: #adc001;
+    cursor: pointer;
+    border-bottom: 1px solid green;
+}
+
+#poke-seznam li:hover {
+    background-color: yellow;
+}
