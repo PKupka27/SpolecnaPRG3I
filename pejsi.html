@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generátor obrázků psů</title>
+  <style>
+    img {
+      max-width: 100%;
+      height: auto;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Generátor obrázků psů</h1>
+  <button onclick="generovatObrázek()">Generovat nový obrázek</button>
+  <div id="obrazekContainer"></div>
+
+  <script>
+    async function generovatObrázek() {
+      try {
+        const response = await fetch('https://dog.ceo/api/breeds/image/random');
+        const data = await response.json();
+        zobrazitObrázek(data.message);
+      } catch (error) {
+        console.error('Chyba při načítání obrázku:', error);
+      }
+    }
+
+    function zobrazitObrázek(src) {
+      const container = document.getElementById('obrazekContainer');
+      container.innerHTML = ''; // Vymažeme předchozí obrázek, pokud existuje
+
+      const img = document.createElement('img');
+      img.src = src;
+      container.appendChild(img);
+    }
+  </script>
+</body>
+</html>
