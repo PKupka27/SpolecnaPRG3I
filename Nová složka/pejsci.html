@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Náhodný obrázek psa</title>
+<style>
+    img {
+        max-width: 100%;
+        height: auto;
+        display: none; /* Obrázek bude skrytý, dokud není zobrazen */
+    }
+</style>
+</head>
+<body>
+<h1>Náhodný obrázek psa</h1>
+<button onclick="zobrazNahodnyObrázek()">Zobrazit náhodný obrázek psa</button>
+<img id="obrazek" src="" alt="Náhodný obrázek psa">
+
+<script>
+    function zobrazNahodnyObrázek() {
+        var xhr = new XMLHttpRequest(); // Vytvořit nový objekt XMLHttpRequest
+        xhr.open('GET', 'https://dog.ceo/api/breeds/image/random', true); // Nastavit URL pro API
+        xhr.onload = function() {
+            if (xhr.status === 200) { // Pokud je požadavek úspěšný
+                var response = JSON.parse(xhr.responseText); // Parsovat JSON odpověď
+                var obrazekURL = response.message; // Získat URL obrázku z odpovědi
+                var obrazekElement = document.getElementById('obrazek'); // Najít element obrázku
+                obrazekElement.src = obrazekURL; // Nastavit src atribut obrázku na získané URL
+                obrazekElement.style.display = 'block'; // Zobrazit obrázek
+            } else {
+                console.error('Chyba při načítání obrázku:', xhr.statusText); // Vypsat chybu do konzole
+            }
+        };
+        xhr.onerror = function() {
+            console.error('Chyba při načítání obrázku.'); // Vypsat chybu do konzole
+        };
+        xhr.send(); // Odeslat požadavek na API
+    }
+</script>
+</body>
+</html>
