@@ -17,7 +17,5 @@ window.onload = function() {
     document.getElementById('refreshButton').addEventListener('click', function() {
         window.location.reload();
     });
-
-    // Call the API function with the defined URL and options
     callApi(url, options);
 }
