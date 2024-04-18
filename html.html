@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zobrazení náhodného obrázku psa</title>
+</head>
+<body>
+    <img id="imgDog" src="" alt="Náhodný obrázek psa">
+    <button onclick="ziskatNahodnyObrazek()">Zobrazit nový náhodný obrázek psa</button>
+    <script>
+        window.onload = function() {
+            ziskatNahodnyObrazek();
+        }
+
+        async function zavolejApi(urlVolani, volbyVolani) {
+            try {
+                const odpoved = await fetch(urlVolani, volbyVolani);
+                const vysledek = await odpoved.json();
+                const zprava = vysledek.message;
+                document.getElementById('imgDog').src = zprava;
+            } catch (chyba) {
+                console.error(chyba);
+            }
+        }
+
+        function ziskatNahodnyObrazek() {
+            const url = 'https://dog.ceo/api/breeds/image/random';
+            const options = {
+                method: 'GET'
+            };
+            
+            zavolejApi(url, options);
+        }
+    </script>
+</body>
+</html>
