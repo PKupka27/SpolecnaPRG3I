@@ -15,7 +15,7 @@ window.onload = function(){
             const response = await fetch(callUrl, callOptions);
             const result = await response.text();
             const message = JSON.parse(result)
-            document.getElementById('sndCmd').src = message.message;
+            document.getElementById('dogImage').src = message.message;
             return message;
         } catch (error) {
             console.error(error);
