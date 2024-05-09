@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zobrazení náhodného obrázku psa</title>
+</head>
+<body>
+    <img id="imgDog" src="" alt="Náhodný obrázek psa">
+    <button onclick="ziskejNahodnyObrzek()">Novej pes prosím</button>
+    <script>
+        window.onload = function() {
+            ziskejNahodnyObrzek(); // Zavolej funkci při načtení stránky
+        }
+
+        async function zavolejApi(urlVolani, volbyVolani) {
+            try {
+                const odpoved = await fetch(urlVolani, volbyVolani);
+                const vysledek = await odpoved.json(); // Použij json() místo text(), když parsování JSON
+                const zprava = vysledek.message; // Přístup k 'message' přímo
+                document.getElementById('imgDog').src = zprava;
+            } catch (chyba) {
+                console.error(chyba);
+            }
+        }
+
+        function ziskejNahodnyObrzek() {
+            const url = 'https://dog.ceo/api/breeds/image/random';
+            const options = {
+                method: 'GET'
+            };
+
+            // Zavolej funkci pro volání API
+            zavolejApi(url, options);
+        }
+    </script>
+</body>
+</html>
