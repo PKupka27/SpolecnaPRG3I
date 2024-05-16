@@ -1,5 +1,5 @@
-window.onload = function() {
-    ziskatNahodnyObrzek(); // Získá a uloží první náhodný obrázek při načtení stránky
+window.onload = async function() {
+    await ziskatNahodnyObrzek(); // Získá a uloží první náhodný obrázek při načtení stránky
 }
 
 let savedImages = [];
@@ -19,17 +19,17 @@ async function zavolejApi(urlVolani, volbyVolani) {
 }
 
 async function ziskatNahodnyObrzek() {
-    if (currentIndex === savedImages.length) {
-        const url = 'https://dog.ceo/api/breeds/image/random';
-        const options = {
-            method: 'GET'
-        };
-        const imageUrl = await zavolejApi(url, options);
+    const url = 'https://dog.ceo/api/breeds/image/random';
+    const options = {
+        method: 'GET'
+    };
+    const imageUrl = await zavolejApi(url, options);
 
-        savedImages.push(imageUrl);
-    }
+    // Přidat obrázek do pole uložených obrázků
+    savedImages.unshift(imageUrl);
 
-    zobrazitObrzek(currentIndex);
+    // Zobrazit nový obrázek
+    zobrazitObrzek(0);
 }
 
 function zobrazitObrzek(index) {
@@ -37,23 +37,26 @@ function zobrazitObrzek(index) {
     const imgNumber = document.getElementById('imgNumber');
 
     imgDog.src = savedImages[index];
+    currentIndex = index;
 
-    if (currentIndex > 0) {
-        imgNumber.style.display = 'block';
-        imgNumber.textContent = `Obrázek číslo: ${currentIndex + 1}`;
-    } else {
-        imgNumber.style.display = 'none';
-    }
+    // Zobrazit číslo obrázku
+    zobrazitCisloObrázku();
 }
 
-function zobrazitPredchoziObrzek() {
+function zobrazitCisloObrázku() {
+    const imgNumber = document.getElementById('imgNumber');
+    imgNumber.textContent = `Obrázek číslo: ${currentIndex + 1}`;
+    imgNumber.style.display = 'block';
+}
+
+async function zobrazitPredchoziObrzek() {
     if (currentIndex > 0) {
         currentIndex--;
         zobrazitObrzek(currentIndex);
     }
 }
 
-function zobrazitDalsiObrzek() {
+async function zobrazitDalsiObrzek() {
     if (currentIndex < savedImages.length - 1) {
         currentIndex++;
         zobrazitObrzek(currentIndex);
