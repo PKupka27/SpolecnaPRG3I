@@ -4,92 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Random Dog Image</title>
-<style>
-    body {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background-color: #f0f0f0;
-    }
-
-    h1 {
-        margin-bottom: 20px;
-    }
-
-    button {
-        padding: 10px 20px;
-        margin: 10px;
-        font-size: 16px;
-        cursor: pointer;
-        border: none;
-        background-color: #007bff;
-        color: white;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-        background-color: #0056b3;
-    }
-
-    img {
-        max-width: 100%;
-        height: auto;
-        margin-top: 20px;
-        border-radius: 5px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>Random Dog Image</h1>
     <button onclick="getRandomDog()">Zobrazit náhodného psa</button>
     <button onclick="showPreviousDog()">Zobrazit předchozího psa</button>
     <div id="dogImageContainer"></div>
-
-    <script>
-        let dogImages = [];
-        let currentIndex = -1;
-
-        function getRandomDog() {
-            fetch('https://dog.ceo/api/breeds/image/random')
-                .then(response => response.json())
-                .then(data => {
-                    const newImageUrl = data.message;
-
-                    // Add the new image URL to the array and update the current index
-                    dogImages.push(newImageUrl);
-                    currentIndex = dogImages.length - 1;
-
-                    // Display the new image
-                    displayDogImage(newImageUrl);
-                })
-                .catch(error => console.error('Chyba při načítání obrázku:', error));
-        }
-
-        function showPreviousDog() {
-            if (currentIndex > 0) {
-                currentIndex--;
-                displayDogImage(dogImages[currentIndex]);
-            } else {
-                console.log('Žádný předchozí obrázek není dostupný.');
-            }
-        }
-
-        function displayDogImage(url) {
-            const dogImageElement = document.createElement('img');
-            dogImageElement.src = url;
-            const dogImageContainer = document.getElementById('dogImageContainer');
-            dogImageContainer.innerHTML = '';
-            dogImageContainer.appendChild(dogImageElement);
-        }
-
-        window.onload = getRandomDog;
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
+
 
