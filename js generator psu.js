@@ -3,24 +3,26 @@ window.onload = function() {
     const options = {
         method: 'GET'
     };
-    let prevImage = [];
-    let imageCount = 10;
-    let generatedImages = 0;
+    let prevImages = []; // Uchování předchozích obrázků
+    let maxImages = 10; // Maximální počet obrázků
+    let generatedImages = 0; // Počet již vygenerovaných obrázků
 
     async function callApi(callUrl, callOptions) {
         try {
-            if (imageCount < 10) { // Kontrola maximálního počtu obrázků
+            if (generatedImages < maxImages) {
                 const response = await fetch(callUrl, callOptions);
                 const result = await response.text();
-                const message = JSON.parse(result)
+                const message = JSON.parse(result);
                 prevImages.push(document.getElementById('imgDog').src);
                 document.getElementById('imgDog').src = message.message;
                 generatedImages++;
                 if (generatedImages === maxImages) {
                     document.getElementById('generateBtn').disabled = true; // Zablokování tlačítka po dosažení maximálního počtu obrázků
-                } else {
-                    alert('Bylo dosaženo maximálního počtu obrázků (10).');
-                } catch (error) {
+                }
+            } else {
+                alert('Bylo dosaženo maximálního počtu obrázků (10).');
+            }
+        } catch (error) {
             console.error(error);
         }
     }
@@ -36,7 +38,6 @@ window.onload = function() {
             document.getElementById('imgDog').src = prevImages.pop();
             generatedImages--;
             document.getElementById('generateBtn').disabled = false; // Odblokování tlačítka pro generování dalšího obrázku
-        }
         }
     });
 }
