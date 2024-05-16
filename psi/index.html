@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Dog Image Generator</title>
+</head>
+<body>
+    <div>
+        <button id="generateBtn">generace psa</button>
+        <button id="backBtn">zpět</button>
+    </div>
+    <div>
+        <img id="imgDog" src="" alt="Random Dog Image">
+    </div>
+
+    <script>
+        window.onload = function(){ 
+
+            const url = 'https://dog.ceo/api/breeds/image/random';
+            const options = {
+                method: 'GET'
+            };
+            const imageHistory = [];
+            let currentIndex = -1;
+
+            async function callApi(callUrl, callOptions) {
+                try {
+                    const response = await fetch(callUrl, callOptions);
+                    const result = await response.text();
+                    const message = JSON.parse(result);
+                    if (currentIndex === imageHistory.length - 1) {
+                        imageHistory.push(message.message);
+                    } else {
+                        imageHistory.splice(currentIndex + 1);
+                        imageHistory.push(message.message);
+                    }
+                    currentIndex++;
+                    document.getElementById('imgDog').src = message.message;
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+
+            // Function to generate random dog image
+            function generateRandomDogImage() {
+                callApi(url, options);
+            }
+
+            // Function to go back to the previous dog image
+            function goBack() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    document.getElementById('imgDog').src = imageHistory[currentIndex];
+                }
+            }
+
+            // Attach click event listeners to the buttons
+            document.getElementById('generateBtn').addEventListener('click', generateRandomDogImage);
+            document.getElementById('backBtn').addEventListener('click', goBack);
+        }
+    </script>
+</body>
+</html>
