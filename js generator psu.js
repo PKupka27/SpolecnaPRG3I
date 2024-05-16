@@ -3,25 +3,20 @@ window.onload = function() {
     const options = {
         method: 'GET'
     };
-    let prevImages = []; // Uchování předchozích obrázků
-    let maxImages = 10; // Maximální počet obrázků
-    let generatedImages = 0; // Počet již vygenerovaných obrázků
+    let prevImages = []; // Pole pro uchování předchozích obrázků
+    let currentIndex = 0; // Index aktuálně zobrazeného obrázku
 
     async function callApi(callUrl, callOptions) {
         try {
-            if (generatedImages < maxImages) {
-                const response = await fetch(callUrl, callOptions);
-                const result = await response.text();
-                const message = JSON.parse(result);
-                prevImages.push(document.getElementById('imgDog').src);
-                document.getElementById('imgDog').src = message.message;
-                generatedImages++;
-                if (generatedImages === maxImages) {
-                    document.getElementById('generateBtn').disabled = true; // Zablokování tlačítka po dosažení maximálního počtu obrázků
-                }
-            } else {
-                alert('Bylo dosaženo maximálního počtu obrázků (10).');
+            if (prevImages.length >= 10) {
+                prevImages.shift(); // Odebrání prvního obrázku, pokud je jich více než 10
             }
+            const response = await fetch(callUrl, callOptions);
+            const result = await response.text();
+            const message = JSON.parse(result);
+            prevImages.push(message.message); // Přidání nového obrázku do pole
+            currentIndex = prevImages.length - 1; // Nastavení aktuálního indexu na poslední obrázek
+            document.getElementById('imgDog').src = prevImages[currentIndex];
         } catch (error) {
             console.error(error);
         }
@@ -32,12 +27,13 @@ window.onload = function() {
         callApi(url, options);
     });
 
-    // Funkce pro návrat na předchozí obrázek
+    // Funkce pro zobrazení předchozího obrázku
     document.getElementById('backBtn').addEventListener('click', function() {
-        if (prevImages.length > 0) {
-            document.getElementById('imgDog').src = prevImages.pop();
-            generatedImages--;
-            document.getElementById('generateBtn').disabled = false; // Odblokování tlačítka pro generování dalšího obrázku
+        if (currentIndex > 0) {
+            currentIndex--;
+        } else {
+            currentIndex = prevImages.length - 1;
         }
+        document.getElementById('imgDog').src = prevImages[currentIndex];
     });
 }
