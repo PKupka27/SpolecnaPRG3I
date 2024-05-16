@@ -4,3 +4,7 @@
     margin: 20px auto;
     max-width: 100%;
 }
+
+#imgNumber {
+    display: none;
+}
