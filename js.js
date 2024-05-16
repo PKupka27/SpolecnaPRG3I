@@ -3,7 +3,7 @@ window.onload = function() {
 }
 
 let previousImageUrl = '';
-let hasPreviousImage = false;
+let currentImageUrl = '';
 
 async function zavolejApi(urlVolani, volbyVolani) {
     try {
@@ -16,7 +16,7 @@ async function zavolejApi(urlVolani, volbyVolani) {
 
         // Nastavit nový obrázek
         document.getElementById('imgDog').src = zprava;
-        hasPreviousImage = true;
+        currentImageUrl = zprava;
     } catch (chyba) {
         console.error(chyba);
     }
@@ -35,7 +35,7 @@ function ulozPredchoziObrazek() {
     const imgDog = document.getElementById('imgDog');
     const src = imgDog.src;
 
-    if (src) {
+    if (src && src !== currentImageUrl) {
         previousImageUrl = src;
     }
 }
@@ -43,9 +43,11 @@ function ulozPredchoziObrazek() {
 function zobrazitPredchoziObrazek() {
     const imgDog = document.getElementById('imgDog');
 
-    if (hasPreviousImage) {
+    if (previousImageUrl && previousImageUrl !== currentImageUrl) {
         // Zobrazit předchozí obrázek
         imgDog.src = previousImageUrl;
-        hasPreviousImage = false;
+
+        // Vynulovat předchozí obrázek po zobrazení
+        previousImageUrl = '';
     }
 }
