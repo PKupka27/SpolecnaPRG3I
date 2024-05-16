@@ -15,7 +15,10 @@
 <body>
     <h1>Random Dog Image</h1>
     <button onclick="getRandomDog()">Zobrazit náhodného psa</button>
-    <div id="dogImageContainer"></div>
+
+    <button onclick="getPreviousDog()">O psa zpět</button>
+
+    <div id="dogImageContainer">
 
     <script>
         function getRandomDog() {
@@ -28,9 +31,20 @@
                     const dogImageContainer = document.getElementById('dogImageContainer');
                     dogImageContainer.innerHTML = '';
                     dogImageContainer.appendChild(dogImageElement);
+                    localStorage.setItem("previousDog", dogImageURL);
                 })
                 .catch(error => console.error('Chyba při načítání obrázku:', error));
         }
+
+        function getPreviousDog() {
+            const dogImageURL = localStorage.getItem("previousDog");
+            const dogImageElement = document.createElement('img');
+            dogImageElement.src = '"dogImageURL"';
+            const dogImageContainer = document.getElementById('dogImageContainer');
+            dogImageContainer.innerHTML = '';
+            dogImageContainer.appendChild(dogImageElement);
+                        }
     </script>
+
 </body>
 </html>
