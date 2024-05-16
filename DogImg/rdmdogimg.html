@@ -15,9 +15,13 @@
 <body>
     <h1>Random Dog Image</h1>
     <button onclick="getRandomDog()">Zobrazit náhodného psa</button>
+    <button onclick="showPreviousDog()">Zobrazit předchozího psa</button>
     <div id="dogImageContainer"></div>
 
     <script>
+        let dogImages = [];
+        let currentIndex = -1;
+
         function getRandomDog() {
             const dogImageURL = 'https://random.dog/woof.json';
             const xhr = new XMLHttpRequest();
@@ -25,14 +29,34 @@
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     const data = JSON.parse(xhr.responseText);
-                    const dogImageElement = document.createElement('img');
-                    dogImageElement.src = data.url;
-                    const dogImageContainer = document.getElementById('dogImageContainer');
-                    dogImageContainer.innerHTML = '';
-                    dogImageContainer.appendChild(dogImageElement);
+                    const newImageUrl = data.url;
+
+                    // Add the new image URL to the array and update the current index
+                    dogImages.push(newImageUrl);
+                    currentIndex = dogImages.length - 1;
+
+                    // Display the new image
+                    displayDogImage(newImageUrl);
                 }
             };
             xhr.send();
+        }
+
+        function showPreviousDog() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                displayDogImage(dogImages[currentIndex]);
+            } else {
+                console.log('Žádný předchozí obrázek není dostupný.');
+            }
+        }
+
+        function displayDogImage(url) {
+            const dogImageElement = document.createElement('img');
+            dogImageElement.src = url;
+            const dogImageContainer = document.getElementById('dogImageContainer');
+            dogImageContainer.innerHTML = '';
+            dogImageContainer.appendChild(dogImageElement);
         }
 
         window.onload = getRandomDog;
