@@ -11,8 +11,8 @@ async function zavolejApi(urlVolani, volbyVolani) {
         const vysledek = await odpoved.json();
         const zprava = vysledek.message;
 
-        // Uložit aktuální obrázek jako předchozí obrázek
-        ulozPredchoziObrazek();
+        // Nastavit nový obrázek a uložit aktuální obrázek jako předchozí
+        ulozPredchoziObrazek(zprava);
 
         // Nastavit nový obrázek
         document.getElementById('imgDog').src = zprava;
@@ -31,11 +31,11 @@ function ziskatNahodnyObrazek() {
     zavolejApi(url, options);
 }
 
-function ulozPredchoziObrazek() {
+function ulozPredchoziObrazek(newImageUrl) {
     const imgDog = document.getElementById('imgDog');
     const src = imgDog.src;
 
-    if (src && src !== currentImageUrl) {
+    if (src && src !== newImageUrl) {
         previousImageUrl = src;
     }
 }
