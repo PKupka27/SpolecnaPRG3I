@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random dog</title>
+    <script src="dog.js"></script>
+    <style>
+    button{
+        margin: auto;
+        height: 150px;
+        width: 300px;
+        border-radius: 20px;
+        border-width: 5px;
+        background-color: aqua;  
+        font-size: large;
+    }
+
+    img{
+        border-radius: 10px; 
+    }
+     
+    .container {
+    text-align: center; 
+    margin-top: 20px; 
+    font-family: Arial, Helvetica, sans-serif;
+    }   
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        Toto je generátor náhodných obrázků pejsků. Klikni na "Generuj"..
+    </div>
+    <div class="container">
+        <button id="button">Generuj!</button>
+        <button id="backButton">Zpět</button> <!-- Nové tlačítko "Zpět" -->
+    </div>
+    <div class="container">
+        <img src="" id="dog">
+    </div>
+</body>
+</html>
