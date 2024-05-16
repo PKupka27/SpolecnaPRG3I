@@ -1,9 +1,9 @@
 window.onload = async function() {
-    await ziskatNahodnyObrzek(); // Získá a uloží první náhodný obrázek při načtení stránky
+    await ziskatNahodneObrasky(); // Získá a uloží prvních 10 náhodných obrázků při načtení stránky
 }
 
 let savedImages = [];
-let currentIndex = 0;
+let currentIndex = -1; // Index aktuálně zobrazeného obrázku
 
 async function zavolejApi(urlVolani, volbyVolani) {
     try {
@@ -18,47 +18,49 @@ async function zavolejApi(urlVolani, volbyVolani) {
     }
 }
 
-async function ziskatNahodnyObrzek() {
-    const url = 'https://dog.ceo/api/breeds/image/random';
-    const options = {
-        method: 'GET'
-    };
-    const imageUrl = await zavolejApi(url, options);
+async function ziskatNahodneObrasky() {
+    const pocetObrasku = 10;
 
-    // Přidat obrázek do pole uložených obrázků
-    savedImages.unshift(imageUrl);
+    for (let i = 0; i < pocetObrasku; i++) {
+        const url = 'https://dog.ceo/api/breeds/image/random';
+        const options = {
+            method: 'GET'
+        };
+        const imageUrl = await zavolejApi(url, options);
 
-    // Zobrazit nový obrázek
-    zobrazitObrzek(0);
+        savedImages.push(imageUrl);
+    }
+
+    // Zobrazit první obrázek
+    currentIndex = 0;
+    zobrazitObrzek();
 }
 
-function zobrazitObrzek(index) {
+function zobrazitObrzek() {
     const imgDog = document.getElementById('imgDog');
     const imgNumber = document.getElementById('imgNumber');
 
-    imgDog.src = savedImages[index];
-    currentIndex = index;
-
-    // Zobrazit číslo obrázku
-    zobrazitCisloObrázku();
-}
-
-function zobrazitCisloObrázku() {
-    const imgNumber = document.getElementById('imgNumber');
-    imgNumber.textContent = `Obrázek číslo: ${currentIndex + 1}`;
-    imgNumber.style.display = 'block';
+    if (currentIndex >= 0 && currentIndex < savedImages.length) {
+        imgDog.src = savedImages[currentIndex];
+        imgNumber.textContent = `Obrázek číslo: ${currentIndex + 1}`;
+        imgNumber.style.display = 'block';
+    } else {
+        imgDog.src = ''; // Zobrazí se prázdný obrázek, pokud není žádný obrázek k dispozici
+        imgNumber.textContent = ''; // Skryje číslo obrázku, pokud není žádný obrázek k dispozici
+        imgNumber.style.display = 'none';
+    }
 }
 
 async function zobrazitPredchoziObrzek() {
     if (currentIndex > 0) {
         currentIndex--;
-        zobrazitObrzek(currentIndex);
+        zobrazitObrzek();
     }
 }
 
 async function zobrazitDalsiObrzek() {
     if (currentIndex < savedImages.length - 1) {
         currentIndex++;
-        zobrazitObrzek(currentIndex);
+        zobrazitObrzek();
     }
 }
