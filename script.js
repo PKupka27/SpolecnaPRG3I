@@ -3,34 +3,42 @@ window.onload = function() {
     const options = {
         method: 'GET'
     };
+    const imageCount = Math.floor(Math.random() * 10) + 1; 
+    let imageUrls = [];
+    let currentIndex = 0;
 
-    let lastImageUrl = '';
-
-    async function callApi(callUrl, callOptions) {
-        try {
-            const response = await fetch(callUrl, callOptions);
-            const result = await response.json();
-            const currentImageUrl = document.getElementById('imgDog').src;
-            if (currentImageUrl) {
-                lastImageUrl = currentImageUrl;
+    async function loadImages(count) {
+        for (let i = 0; i < count; i++) {
+            try {
+                const response = await fetch(url, options);
+                const result = await response.json();
+                imageUrls.push(result.message);
+            } catch (error) {
+                console.error(error);
             }
-            document.getElementById('imgDog').src = result.message;
-        } catch (error) {
-            console.error(error);
+        }
+        if (imageUrls.length > 0) {
+            document.getElementById('imgDog').src = imageUrls[0];
         }
     }
 
-    document.getElementById('refreshButton').addEventListener('click', function() {
-        callApi(url, options);
-    });
-
-    document.getElementById('revertButton').addEventListener('click', function() {
-        if (lastImageUrl) {
-            const currentImageUrl = document.getElementById('imgDog').src;
-            document.getElementById('imgDog').src = lastImageUrl;
-            lastImageUrl = currentImageUrl;
+    document.getElementById('nextButton').addEventListener('click', function() {
+        if (currentIndex < imageUrls.length - 1) {
+            currentIndex++;
+        } else {
+            currentIndex = 0; //zpět na první
         }
+        document.getElementById('imgDog').src = imageUrls[currentIndex];
     });
 
-    callApi(url, options);
+    document.getElementById('prevButton').addEventListener('click', function() {
+        if (currentIndex > 0) {
+            currentIndex--;
+        } else {
+            currentIndex = imageUrls.length - 1; // zpět na poslední
+        }
+        document.getElementById('imgDog').src = imageUrls[currentIndex];
+    });
+
+    loadImages(imageCount);
 }
