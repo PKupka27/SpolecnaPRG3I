@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Generování náhodné fotky psa</title>
+<title>Generování náhodné fotky psu 10 obrazku frfr</title>
 <style>
   #image-container {
     margin-top: 20px;
@@ -16,10 +16,10 @@
 <div id="image-container"></div>
 
 <script>
-let dogImages = []; // Pole pro ukládání 10 obrázků psů
+let dogImages = []; 
 let currentPosition = 0; // Aktuální pozice v poli obrázků
 
-// Funkce pro načtení náhodné fotky psa
+
 function loadRandomDogImages() {
   for (let i = 0; i < 10; i++) {
     fetch('https://dog.ceo/api/breeds/image/random').then(response => {
@@ -27,7 +27,7 @@ function loadRandomDogImages() {
     }).then(data => {
       const imageUrl = data.message;
       dogImages.push(imageUrl);
-      // Pokud jsme načetli 10 obrázků, zobrazíme první a aktivujeme tlačítka
+      
       if (dogImages.length === 10) {
         displayImage(0);
         document.getElementById('prevBtn').style.display = 'inline';
@@ -39,21 +39,31 @@ function loadRandomDogImages() {
   }
 }
 
-document.getElementById('generateBtn').addEventListener('click', loadRandomDogImage);
 
-document.getElementById('backBtn').addEventListener('click', function() {
-  
-  if (currentIndex > 0) {
-    currentIndex--;
-    const imageUrl = previousImages[currentIndex];
-    const imageElement = document.createElement('img');
-    imageElement.src = imageUrl;
-    document.getElementById('image-container').innerHTML = '';
-    document.getElementById('image-container').appendChild(imageElement);
+function displayImage(position) {
+  const imageUrl = dogImages[position];
+  const imageElement = document.createElement('img');
+  imageElement.src = imageUrl;
+  document.getElementById('image-container').innerHTML = '';
+  document.getElementById('image-container').appendChild(imageElement);
+
+  currentPosition = position;
+}
+
+
+loadRandomDogImages();
+
+document.getElementById('prevBtn').addEventListener('click', function() {
+  // Přepnutí na předchozí obrázek
+  if (currentPosition > 0) {
+    displayImage(currentPosition - 1);
   }
+});
+
+document.getElementById('nextBtn').addEventListener('click', function() {
   
-  if (currentIndex === 0) {
-    document.getElementById('backBtn').style.display = 'none';
+  if (currentPosition < 9) {
+    displayImage(currentPosition + 1);
   }
 });
 
