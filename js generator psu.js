@@ -3,8 +3,8 @@ window.onload = function() {
     const options = {
         method: 'GET'
     };
-    let imageHistory = [];
-    let numberOfImages = 10;
+    let prevImages = [];
+    let maxImages = 10;
     let currentIndex = 0; // Index aktuálně zobrazeného obrázku
 
     async function callApi(callUrl, callOptions) {
