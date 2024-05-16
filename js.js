@@ -1,5 +1,5 @@
 window.onload = function() {
-    ziskatNahodneObrzky(10); // Získá a uloží 10 náhodných obrázků při načtení stránky
+    ziskatNahodnyObrzek(); // Získá a uloží první náhodný obrázek při načtení stránky
 }
 
 let savedImages = [];
@@ -17,17 +17,16 @@ async function zavolejApi(urlVolani, volbyVolani) {
     }
 }
 
-async function ziskatNahodneObrzky(pocetObrzk) {
-    for (let i = 0; i < pocetObrzk; i++) {
-        const url = 'https://dog.ceo/api/breeds/image/random';
-        const options = {
-            method: 'GET'
-        };
-        const imageUrl = await zavolejApi(url, options);
+async function ziskatNahodnyObrzek() {
+    const url = 'https://dog.ceo/api/breeds/image/random';
+    const options = {
+        method: 'GET'
+    };
+    const imageUrl = await zavolejApi(url, options);
 
-        // Uložit obrázek do pole a přiřadit mu číslo podle pořadí
-        savedImages.push(imageUrl);
-    }
+    // Přidat obrázek na první pozici v poli uložených obrázků
+    savedImages.unshift(imageUrl);
+
     // Zobrazit první uložený obrázek
     zobrazitObrzek(0);
 }
