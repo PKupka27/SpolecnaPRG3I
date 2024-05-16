@@ -1,9 +1,6 @@
 window.onload = async function() {
-    await ziskatNahodneObrasky(); // Získá a uloží prvních 10 náhodných obrázků při načtení stránky
+    await ziskatNahodnyObrzek(); // Získá a zobrazí první náhodný obrázek při načtení stránky
 }
-
-let savedImages = [];
-let currentIndex = -1; // Index aktuálně zobrazeného obrázku
 
 async function zavolejApi(urlVolani, volbyVolani) {
     try {
@@ -18,49 +15,27 @@ async function zavolejApi(urlVolani, volbyVolani) {
     }
 }
 
-async function ziskatNahodneObrasky() {
-    const pocetObrasku = 10;
+async function ziskatNahodnyObrzek() {
+    const url = 'https://dog.ceo/api/breeds/image/random';
+    const options = {
+        method: 'GET'
+    };
+    const imageUrl = await zavolejApi(url, options);
 
-    for (let i = 0; i < pocetObrasku; i++) {
-        const url = 'https://dog.ceo/api/breeds/image/random';
-        const options = {
-            method: 'GET'
-        };
-        const imageUrl = await zavolejApi(url, options);
-
-        savedImages.push(imageUrl);
-    }
-
-    // Zobrazit první obrázek
-    currentIndex = 0;
-    zobrazitObrzek();
+    zobrazitObrzek(imageUrl);
 }
 
-function zobrazitObrzek() {
+function zobrazitObrzek(imageUrl) {
     const imgDog = document.getElementById('imgDog');
     const imgNumber = document.getElementById('imgNumber');
 
-    if (savedImages.length > 0) {
-        imgDog.src = savedImages[currentIndex];
-        imgNumber.textContent = `Obrázek číslo: ${currentIndex + 1}`;
-        imgNumber.style.display = 'block';
+    if (imageUrl) {
+        imgDog.src = imageUrl;
+        imgNumber.textContent = ''; // Skryje číslo obrázku
+        imgNumber.style.display = 'none';
     } else {
         imgDog.src = ''; // Zobrazí se prázdný obrázek, pokud není žádný obrázek k dispozici
         imgNumber.textContent = ''; // Skryje číslo obrázku, pokud není žádný obrázek k dispozici
         imgNumber.style.display = 'none';
-    }
-}
-
-async function zobrazitPredchoziObrzek() {
-    if (currentIndex > 0) {
-        currentIndex--;
-        zobrazitObrzek();
-    }
-}
-
-async function zobrazitDalsiObrzek() {
-    if (currentIndex < savedImages.length - 1) {
-        currentIndex++;
-        zobrazitObrzek();
     }
 }
