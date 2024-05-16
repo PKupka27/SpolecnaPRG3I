@@ -4,6 +4,7 @@ window.onload = function() {
         method: 'GET'
     };
     let prevImages = []; // Pole pro uchování předchozích obrázků
+    let maxImages = 10;
     let currentIndex = 0; // Index aktuálně zobrazeného obrázku
 
     async function callApi(callUrl, callOptions) {
