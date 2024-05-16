@@ -16,6 +16,13 @@ window.onload = function(){
         }
     };
 
+    btnbck.onclick = function() {
+        if (currentImageIndex > 0) {
+            currentImageIndex--;
+            document.getElementById('dogImage').src = dogImageHistory[currentImageIndex];
+        }
+    };
+
     btnMulti.onclick = function() {
         const count = document.getElementById("pesindex").value;
         if (count > 0) {
@@ -35,4 +42,6 @@ window.onload = function(){
             console.error(error);
         }
     }
+
+    //Je potřeba zadat multižádost a potvrdit jí nejdříve!
 }
