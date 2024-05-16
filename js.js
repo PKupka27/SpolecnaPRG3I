@@ -10,10 +10,9 @@ async function zavolejApi(urlVolani, volbyVolani) {
         const vysledek = await odpoved.json();
         const zprava = vysledek.message;
 
-        // Nastavit nový obrázek a uložit aktuální obrázek jako předchozí
-        const currentImageUrl = document.getElementById('imgDog').src;
-        if (currentImageUrl) {
-            previousImageUrl = currentImageUrl;
+        // Pokud nový obrázek není stejný jako předchozí, uložit ho jako předchozí
+        if (zprava !== previousImageUrl) {
+            previousImageUrl = document.getElementById('imgDog').src;
         }
 
         // Nastavit nový obrázek
