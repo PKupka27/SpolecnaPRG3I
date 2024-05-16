@@ -5,38 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Generátor obrázků psů</title>
   <style>
-    .image-container {
-      text-align: center;
-    }
-    .image-container img {
+    img {
       max-width: 100%;
       height: auto;
       margin-top: 20px;
     }
-    .button-container {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .button-container button {
-      margin: 0 10px;
-    }
-    #photoCount {
-      text-align: center;
-      margin-bottom: 10px;
+    button {
+      margin-right: 10px;
     }
   </style>
 </head>
 <body>
   <h1>Generátor obrázků psů</h1>
-  <div id="photoCount">0 / 0</div>
-  <div class="button-container">
-    <button onclick="previousImage()">Předchozí</button>
-    <button onclick="nextImage()">Další</button>
-  </div>
-  <div class="image-container">
-    <img id="dogImage" src="">
-  </div>
+  <button id="generateButton">Generovat nový obrázek</button>
+  <button id="previousButton">Zpět</button>
+  <div id="obrazekContainer"></div>
 
-  <script src="generator psu2.js"></script>
+  <script src="generator psu1.js"></script>
 </body>
 </html>
