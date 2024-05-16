@@ -3,7 +3,7 @@ window.onload = function() {
     const options = {
         method: 'GET'
     };
-    let prevImages = []; // Uchování předchozích obrázků
+    let prevImages = ""; // Uchování předchozích obrázků
     let maxImages = 10; // Maximální počet obrázků
     let generatedImages = 0; // Počet již vygenerovaných obrázků
 
