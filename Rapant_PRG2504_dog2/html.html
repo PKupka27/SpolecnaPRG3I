@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generátor obrázků psů</title>
+<style>
+    .image-container {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        overflow: hidden;
+        margin: 20px 0;
+    }
+
+    .image-container img {
+        max-width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: transform 0.3s ease;
+    }
+
+    .prev-button, .next-button {
+        margin-top: 10px;
+    }
+</style>
+</head>
+<body>
+    <h1>Generátor obrázků psů</h1>
+    <div class="image-container" id="dogImageContainer"></div>
+    <button onclick="loadImages()">Načíst obrázky</button>
+    <button class="prev-button" onclick="showPrevious()">Předchozí</button>
+    <button class="next-button" onclick="showNext()">Další</button>
+    <script src="js generator psu2.js"></script>
+</body>
+</html>
