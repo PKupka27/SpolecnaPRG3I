@@ -7,41 +7,36 @@
 <style>
   #image-container {
     margin-top: 20px;
+}
 </style>
 </head>
 <body>
-<button id="generateBtn">Generovat náhodnou fotku psa</button>
-<button id="backBtn" style="display: none;">Zpět</button>  
-<div id="image-container"></div>   
-// toto mi udělá buttons
+<button id="prevBtn" style="display: none;">Předchozí</button>
+<button id="nextBtn" style="display: none;">Další</button>
+<div id="image-container"></div>
 
 <script>
-let previousImages = [];      // vrací zpátky jen script
-let currentIndex = -1; 
+let dogImages = []; // Pole pro ukládání 10 obrázků psů
+let currentPosition = 0; // Aktuální pozice v poli obrázků
 
-
-function loadRandomDogImage() {
-  fetch('https://dog.ceo/api/breeds/image/random').then(response => {
-    return response.json();
-  }).then(data => {
-    const imageUrl = data.message;
-    const imageElement = document.createElement('img');
-    imageElement.src = imageUrl;
-    document.getElementById('image-container').innerHTML = '';
-    document.getElementById('image-container').appendChild(imageElement);    // toto je api
-    
-    
-    previousImages.push(imageUrl);
-    if (previousImages.length > 10) {
-      previousImages.shift();             // délka kam až to pushne zpátky
-    }
-    currentIndex = previousImages.length - 1; 
-
-    
-    document.getElementById('backBtn').style.display = 'inline';
-  }).catch(error => {
-    console.error('Chyba při získávání dat z API:', error);
-  });
+// Funkce pro načtení náhodné fotky psa
+function loadRandomDogImages() {
+  for (let i = 0; i < 10; i++) {
+    fetch('https://dog.ceo/api/breeds/image/random').then(response => {
+      return response.json();
+    }).then(data => {
+      const imageUrl = data.message;
+      dogImages.push(imageUrl);
+      // Pokud jsme načetli 10 obrázků, zobrazíme první a aktivujeme tlačítka
+      if (dogImages.length === 10) {
+        displayImage(0);
+        document.getElementById('prevBtn').style.display = 'inline';
+        document.getElementById('nextBtn').style.display = 'inline';
+      }
+    }).catch(error => {
+      console.error('Chyba při získávání dat z API:', error);
+    });
+  }
 }
 
 document.getElementById('generateBtn').addEventListener('click', loadRandomDogImage);
