@@ -31,11 +31,14 @@ window.onload = function(){
         }
     }
 
-    function callApiPrev(callUrl, callOptions) {
-        if (previousDogImage !== null) {
-            document.getElementById('dogImage').src = previousDogImage;
+    // Pokud se vrátíme zpět o několik obrázků, tak až znovu stiskneme Next, tak už se načtou ale nové obrázky!
+
+    function callApiPrev() {
+        if (currentImageIndex > 0) {
+            currentImageIndex--;
+            document.getElementById('dogImage').src = dogImageHistory[currentImageIndex];
         } else {
-            console.log('No previous image available.');
+            console.log('Žádný předchozí img.');
         }
     }
 }
