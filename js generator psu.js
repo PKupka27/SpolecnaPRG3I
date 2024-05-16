@@ -3,8 +3,8 @@ window.onload = function() {
     const options = {
         method: 'GET'
     };
-    let prevImages = []; // Pole pro uchování předchozích obrázků
-    let maxImages = 10;
+    const imageHistory = [];
+    const numberOfImages = 10;
     let currentIndex = 0; // Index aktuálně zobrazeného obrázku
 
     async function callApi(callUrl, callOptions) {
