@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Dog Image Generator</title>
+</head>
+<body>
+  <button id="generate-btn">Generate Image</button>
+  <button id="back-btn" disabled>Back</button>
+  <div id="image-container"></div>
+
+  <script>
+    const generateBtn = document.getElementById('generate-btn');
+    const backBtn = document.getElementById('back-btn');
+    const imageContainer = document.getElementById('image-container');
+
+    let imageHistory = [];
+    let currentIndex = -1;
+
+    generateBtn.addEventListener('click', () => {
+      fetch('https://dog.ceo/api/breeds/image/random')
+        .then(response => response.json())
+        .then(data => {
+          const imageUrl = data.message;
+
+          imageHistory = imageHistory.slice(0, currentIndex + 1);
+          imageHistory.push(imageUrl);
+          currentIndex++;
+
+          displayImage(imageUrl);
+
+          if (currentIndex > 0) {
+            backBtn.disabled = false;
+          }
+        })
+        .catch(error => console.error('Error fetching images:', error));
+    });
+
+    backBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        const imageUrl = imageHistory[currentIndex];
+        displayImage(imageUrl);
+
+        if (currentIndex === 0) {
+          backBtn.disabled = true;
+        }
+      }
+    });
+
+    function displayImage(url) {
+      const imgElement = document.createElement('img');
+      imgElement.src = url;
+      imgElement.alt = 'Random dog image';
+      imageContainer.innerHTML = '';
+      imageContainer.appendChild(imgElement);
+    }
+  </script>
+</body>
+</html>
