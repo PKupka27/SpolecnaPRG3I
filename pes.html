@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generovat náhodný obrázky psů</title>
+</head>
+<body>
+  <h1>Generátor psů</h1>
+  <button id="generateBtn">Generovat obrázek</button>
+  <br>
+  <img id="imgDog" src="" alt="Obrázek psa">
+  
+  <script>
+    window.onload = function() {
+      const url = 'https://dog.ceo/api/breeds/image/random';
+      const options = {
+          method: 'GET'
+      };
+
+      async function callApi(callUrl, callOptions) {
+          try {
+              const response = await fetch(callUrl, callOptions);
+              const result = await response.text();
+              const message = JSON.parse(result)
+              document.getElementById('imgDog').src = message.message;
+          } catch (error) {
+              console.error(error);
+          }
+      }
+
+      // Funkce pro generování obrázku po kliknutí na tlačítko
+      document.getElementById('generateBtn').addEventListener('click', function() {
+          callApi(url, options);
+      });
+    }
+  </script>
+</body>
+</html>
