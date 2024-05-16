@@ -3,7 +3,7 @@ window.onload = async function() {
 }
 
 let savedImages = [];
-let currentIndex = -1; // Index aktuálně zobrazeného obrázku
+let currentIndex = 0; // Index aktuálně zobrazeného obrázku
 
 async function zavolejApi(urlVolani, volbyVolani) {
     try {
@@ -32,7 +32,6 @@ async function ziskatNahodneObrasky() {
     }
 
     // Zobrazit první obrázek
-    currentIndex = 0;
     zobrazitObrzek();
 }
 
@@ -40,7 +39,7 @@ function zobrazitObrzek() {
     const imgDog = document.getElementById('imgDog');
     const imgNumber = document.getElementById('imgNumber');
 
-    if (currentIndex >= 0 && currentIndex < savedImages.length) {
+    if (savedImages.length > 0) {
         imgDog.src = savedImages[currentIndex];
         imgNumber.textContent = `Obrázek číslo: ${currentIndex + 1}`;
         imgNumber.style.display = 'block';
