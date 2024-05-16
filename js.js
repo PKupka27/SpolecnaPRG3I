@@ -34,5 +34,17 @@ function ulozPredchoziObrazek() {
     
     if (src) {
         previousDog.src = src;
+        document.getElementById('history').style.display = 'block';
+    }
+}
+
+function zobrazitPredchoziObrazek() {
+    const previousDog = document.getElementById('previousDog');
+    const imgDog = document.getElementById('imgDog');
+    const src = previousDog.src;
+
+    if (src) {
+        imgDog.src = src;
+        document.getElementById('history').style.display = 'none';
     }
 }
