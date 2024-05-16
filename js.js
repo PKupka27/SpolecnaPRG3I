@@ -3,7 +3,7 @@ window.onload = async function() {
 }
 
 let savedImages = [];
-let currentIndex = 0; // Index aktuálně zobrazeného obrázku
+let currentIndex = -1; // Index aktuálně zobrazeného obrázku
 
 async function zavolejApi(urlVolani, volbyVolani) {
     try {
@@ -32,6 +32,7 @@ async function ziskatNahodneObrasky() {
     }
 
     // Zobrazit první obrázek
+    currentIndex = 0;
     zobrazitObrzek();
 }
 
