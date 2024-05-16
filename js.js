@@ -2,21 +2,22 @@ window.onload = function() {
     ziskatNahodnyObrazek();
 }
 
-let previousImageUrl = '';
+let previousImages = [];
 
 async function zavolejApi(urlVolani, volbyVolani) {
     try {
         const odpoved = await fetch(urlVolani, volbyVolani);
         const vysledek = await odpoved.json();
-        const zprava = vysledek.message;
+        const imageUrl = vysledek.message;
 
-        // Pokud nový obrázek není stejný jako předchozí, uložit ho jako předchozí
-        if (zprava !== previousImageUrl) {
-            previousImageUrl = document.getElementById('imgDog').src;
+        // Uložit nový obrázek do pole předchozích obrázků
+        if (previousImages.length >= 10) {
+            previousImages.shift(); // Odstranit první obrázek, pokud už jsou uloženy 10
         }
+        previousImages.push(imageUrl);
 
         // Nastavit nový obrázek
-        document.getElementById('imgDog').src = zprava;
+        document.getElementById('imgDog').src = imageUrl;
     } catch (chyba) {
         console.error(chyba);
     }
@@ -34,11 +35,9 @@ function ziskatNahodnyObrazek() {
 function zobrazitPredchoziObrazek() {
     const imgDog = document.getElementById('imgDog');
 
-    if (previousImageUrl) {
-        // Zobrazit předchozí obrázek
-        imgDog.src = previousImageUrl;
-
-        // Vynulovat předchozí obrázek po zobrazení
-        previousImageUrl = '';
+    if (previousImages.length > 0) {
+        // Zobrazit poslední uložený obrázek
+        const lastImage = previousImages.pop();
+        imgDog.src = lastImage;
     }
 }
