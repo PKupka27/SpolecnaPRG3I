@@ -3,6 +3,7 @@ window.onload = function() {
 }
 
 let savedImages = [];
+let currentIndex = 0;
 
 async function zavolejApi(urlVolani, volbyVolani) {
     try {
@@ -18,41 +19,43 @@ async function zavolejApi(urlVolani, volbyVolani) {
 }
 
 async function ziskatNahodnyObrzek() {
-    const url = 'https://dog.ceo/api/breeds/image/random';
-    const options = {
-        method: 'GET'
-    };
-    const imageUrl = await zavolejApi(url, options);
+    if (currentIndex === savedImages.length) {
+        const url = 'https://dog.ceo/api/breeds/image/random';
+        const options = {
+            method: 'GET'
+        };
+        const imageUrl = await zavolejApi(url, options);
 
-    // Přidat obrázek na první pozici v poli uložených obrázků
-    savedImages.unshift(imageUrl);
+        savedImages.push(imageUrl);
+    }
 
-    // Zobrazit první uložený obrázek
-    zobrazitObrzek(0);
+    zobrazitObrzek(currentIndex);
 }
 
 function zobrazitObrzek(index) {
     const imgDog = document.getElementById('imgDog');
     const imgNumber = document.getElementById('imgNumber');
 
-    if (savedImages[index]) {
-        imgDog.src = savedImages[index];
-        imgNumber.textContent = `Obrázek číslo: ${index + 1}`;
+    imgDog.src = savedImages[index];
+
+    if (currentIndex > 0) {
+        imgNumber.style.display = 'block';
+        imgNumber.textContent = `Obrázek číslo: ${currentIndex + 1}`;
+    } else {
+        imgNumber.style.display = 'none';
     }
 }
 
 function zobrazitPredchoziObrzek() {
-    const imgNumber = document.getElementById('imgNumber');
-    const currentIndex = parseInt(imgNumber.textContent.split(': ')[1]) - 1;
     if (currentIndex > 0) {
-        zobrazitObrzek(currentIndex - 1);
+        currentIndex--;
+        zobrazitObrzek(currentIndex);
     }
 }
 
 function zobrazitDalsiObrzek() {
-    const imgNumber = document.getElementById('imgNumber');
-    const currentIndex = parseInt(imgNumber.textContent.split(': ')[1]) - 1;
     if (currentIndex < savedImages.length - 1) {
-        zobrazitObrzek(currentIndex + 1);
+        currentIndex++;
+        zobrazitObrzek(currentIndex);
     }
 }
