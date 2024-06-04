@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalendář s poznámkami</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calendar">
+        <div class="month"></div>
+        <div class="days"></div>
+        <div class="notes">
+            <h2>Poznámky</h2>
+            <textarea id="noteInput" rows="4" cols="30" placeholder="Zde napište poznámku k vybranému dni"></textarea>
+            <button onclick="saveNote()">Uložit</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
