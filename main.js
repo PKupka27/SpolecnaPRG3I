@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Public Konstanty END //
 
     loadTasks(); // Načte úkoly, které byly dříve zadány a uloženy do LocalStorage.
+    fetchCurrentTime(); // Requestne 'http://worldtimeapi.org/api/timezone/Europe/Prague' o JSON. Vlastně zavolá API
+    setInterval(fetchCurrentTime, 1000); // Toto volání slouží jako 'loop', který stále odesílá každých 1000ms požadavek o nový JSON request pro obnovu hodin.
 
     addTaskButton.addEventListener('click', () => { // Při kliknutí zavolá 'addTask' která zavolá 'saveTasks' která uloží data z pole taskText do LocalStorage.
         const taskText = newTaskInput.value.trim();
@@ -57,5 +59,19 @@ document.addEventListener('DOMContentLoaded', () => {
         tasks.forEach(taskText => {
             addTask(taskText);
         });
+    }
+
+    function fetchCurrentTime() { // Funkce pro získání api času a IPv4 nebo IPv6 lokálního stroje (Počítače).
+        fetch('http://worldtimeapi.org/api/timezone/Europe/Prague') // Adresa pro API ve formátu JSON. Konkrétně volá Prahu.
+            .then(response => response.json()) // Převod JSONu do JS objektu
+            .then(data => { // Definuje pro konstanty data fetchnutá z 'API'.
+                currentTimeDisplay.textContent = `Aktuální čas: ${new Date(data.datetime).toLocaleString()}`; // Vypsání času z 'datetime' pomocí Date() + převod z formátu DD-MM-DD-YYYY HH-MM-SS GMT+2 na DD-MM-YY HH-MM-SS.
+                machineIp.textContent = `IP: ${data.client_ip}`; // Vypsání IP z 'client_ip'.
+            })
+            .catch(error => {
+                console.error('Chyba při načítání API:', error); // Chxba
+                currentTimeDisplay.textContent = 'Nelze načíst aktuální čas.'; // Chyba
+                machineIp.textContent = 'Nelze načíst IP.'; // Chyba
+            });
     }
 });
