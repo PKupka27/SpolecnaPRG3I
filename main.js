@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const machineIp = document.getElementById('localmachine-ip');
     // Public Konstanty END //
 
+    loadTasks(); // Načte úkoly, které byly dříve zadány a uloženy do LocalStorage.
+
     addTaskButton.addEventListener('click', () => { // Při kliknutí zavolá 'addTask' která zavolá 'saveTasks' která uloží data z pole taskText do LocalStorage.
         const taskText = newTaskInput.value.trim();
         if (taskText !== '') {
@@ -48,5 +50,12 @@ document.addEventListener('DOMContentLoaded', () => {
             tasks.push(taskItem.firstChild.textContent);
         });
         localStorage.setItem('tasks', JSON.stringify(tasks)); // Uloží itemy do LocalStorage.
+    }
+
+    function loadTasks() {
+        const tasks = JSON.parse(localStorage.getItem('tasks')) || []; // Načte itemy (úkoly) z LocalStorage.
+        tasks.forEach(taskText => {
+            addTask(taskText);
+        });
     }
 });
