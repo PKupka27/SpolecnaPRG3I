@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Prohlížeč Marvel superhrdinů</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/jshashes"></script>
+</head>
+<body>
+    <div id="hero-container">
+        <div id="hero-seznam"></div>
+        <div id="hero-detaily"></div>
+    </div>
+
+    <script>
+        function stahniJSON(url, callback) {
+            let xhr = new XMLHttpRequest();
+            xhr.onload = () => {
+                if (xhr.status === 200) {
+                    callback(JSON.parse(xhr.responseText));
+                } else {
+                    console.error('Chyba při stahování dat:', xhr.statusText);
+                }
+            };
+            xhr.onerror = () => {
+                console.error('Chyba připojení');
+            };
+            xhr.open("GET", url);
+            xhr.send();
+        }
+
+        function generateHash(ts, privateKey, publicKey) {
+            const md5 = new Hashes.MD5();
+            return md5.hex(ts + privateKey + publicKey);
+        }
+
+        function nactiSeznam() {
+            const publicKey = "0712a89164aa942afee2a4700a1b40a4";
+            const privateKey = "7d35ef27dfcaa37319e2b014c55ccc21cc8dfa11";
+            let ts = new Date().getTime();
+            let hash = generateHash(ts, privateKey, publicKey);
+            let url = `https://gateway.marvel.com/v1/public/characters?limit=15&apikey=${publicKey}&ts=${ts}&hash=${hash}`;
+
+            let seznamDiv = document.getElementById("hero-seznam");
+            seznamDiv.innerHTML = "<ul id='hero-seznam-ul'></ul>";
+            let seznamUl = document.getElementById("hero-seznam-ul");
+
+            stahniJSON(url, (data) => {
+                data.data.results.forEach(hero => {
+                    let novaPolozka = document.createElement("li");
+                    novaPolozka.innerText = hero.name;
+                    seznamUl.appendChild(novaPolozka);
+                    let heroUrl = `${hero.resourceURI}?apikey=${publicKey}&ts=${ts}&hash=${hash}`;
+                    novaPolozka.addEventListener("click", () => nactiDetaily(heroUrl));
+                });
+            });
+        }
+
+        function nactiDetaily(url) {
+            let detailyDiv = document.getElementById("hero-detaily");
+            stahniJSON(url, (data) => {
+                let hero = data.data.results[0];
+                let height = Math.floor(Math.random() * 100) + 150;
+                let weight = Math.floor(Math.random() * 100) + 50;
+                let html = `
+                    <img src="${hero.thumbnail.path}.${hero.thumbnail.extension}" alt="${hero.name}" />
+                    <ul>
+                        <li>Jméno: ${hero.name}</li>
+                        <li>Výška: ${height} cm</li>
+                        <li>Váha: ${weight} kg</li>
+                        <li>Popis: ${hero.description || "N/A"}</li>
+                    </ul>
+                `;
+                detailyDiv.innerHTML = html;
+            });
+        }
+
+        nactiSeznam();
+    </script>
+</body>
+</html>

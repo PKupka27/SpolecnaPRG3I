@@ -1,0 +1,55 @@
+/* Rozložení obsahu v hlavním kontejneru */
+#hero-container {
+    display: flex;
+}
+
+/* Styl seznamu superhrdinů */
+#hero-seznam {
+    background-color: #1a1a1a; /* Tmavší pozadí */
+    color: #ffffff; /* Bílý text pro kontrast */
+    padding: 20px;
+    width: 250px; /* Šířka seznamu */
+    text-align: center; /* Zarovnání textu na střed */
+}
+
+#hero-seznam ul {
+    list-style-type: none; /* Zrušení výchozího odrážek */
+    margin: 0;
+    padding: 0;
+}
+
+#hero-seznam li {
+    padding: 15px 20px; /* Větší odsazení */
+    background-color: #333333; /* Středně tmavá barva */
+    cursor: pointer;
+    border-bottom: 1px solid #666666; /* Svislá linka pro oddělení */
+    transition: background-color 0.3s ease; /* Plynulá změna barvy pozadí při najetí myší */
+}
+
+#hero-seznam li:hover {
+    background-color: #555555; /* Jasnější barva pozadí při najetí myší */
+}
+
+/* Styl detailů superhrdiny */
+#hero-detaily {
+    text-align: left; /* Zarovnání textu vlevo */
+    margin-left: 20px; /* Odsazení zleva */
+    padding: 20px;
+    color: #1a1a1a; /* Tmavý text pro kontrast s jasným pozadím */
+}
+
+#hero-detaily img {
+    max-width: 100%;
+    height: auto; /* Zachování poměru stran */
+}
+
+#hero-detaily ul {
+    list-style-type: none; /* Zrušení výchozího odrážek */
+    padding: 0;
+    margin-top: 20px; /* Odsazení od horní části */
+}
+
+#hero-detaily li {
+    margin-bottom: 10px; /* Odstup mezi položkami */
+    font-size: 1.1em; /* Střední velikost textu pro čitelnost */
+}
