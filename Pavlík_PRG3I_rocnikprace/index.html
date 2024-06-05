@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalendář</title>
+    <!-- Odkaz na externí soubor CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Kalendář</h1>
+        <!-- Ovládací prvky kalendáře pro přepínání mezi měsíci -->
+        <div id="calendar-controls">
+            <button id="prevMonth" onclick="changeMonth(-1)">Předchozí měsíc</button>
+            <button id="nextMonth" onclick="changeMonth(1)">Další měsíc</button>
+        </div>
+        <!-- Kontejner pro kalendář -->
+        <div id="calendar"></div>
+        <!-- Tlačítko pro získání aktuálního času -->
+        <button onclick="getCurrentTime()">Získat aktuální čas</button>
+        <!-- Tlačítko pro uložení stránky do textového souboru -->
+        <button onclick="savePage()">Uložit stránku</button>
+        <!-- Místo pro zobrazení aktuálního času -->
+        <p id="currentTime"></p>
+    </div>
+    <!-- Odkaz na externí soubor JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
