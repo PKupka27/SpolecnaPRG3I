@@ -1,0 +1,28 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Nastavení výšky na výšku okna pro vycentrování obsahu */
+    margin: 0;
+  }
+  table {
+    width: 300px; /* Šířka kalendáře */
+    border-collapse: collapse;
+  }
+  th, td {
+    border: 1px solid #ddd; /* Ohraničení buněk */
+    padding: 8px; /* Vnitřní okraj buněk */
+    text-align: center;
+  }
+  th {
+    background-color: #f2f2f2; /* Barva pozadí záhlaví tabulky */
+  }
+  button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+  }
+  /* odsazení tlačítek, barvy, odstranění okrajů a kursor /*
