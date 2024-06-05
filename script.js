@@ -1,9 +1,9 @@
 document.addEventListener('List', function() {
-    const monthNames = ["sněhomrden(leden)", "mrázipičinec(únor)", "březen", "duben", "květen", "červen", "červenec", "srpen", "září", "říjen", "listopad", "prosinec"]; 
+    const monthNames = ["leden", "únor", "březen", "duben", "květen", "červen", "červenec", "srpen", "září", "říjen", "listopad", "prosinec"]; 
 
     let currentDate = new Date(); // Inicializace
 
-    // objecty:
+    // objekty:
     const Last = document.getElementById('prev-month');
     const Next = document.getElementById('next-month');
     const MonthYear = document.getElementById('month-year');
@@ -12,7 +12,6 @@ document.addEventListener('List', function() {
     function renderCalendar() { 
         calendarBody.innerHTML = ''; // Vymazání předchozího kalendáře
 
-        
         const Day1 = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
         const DayLast = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
         const DayStart = Day1.getDay();
@@ -45,10 +44,8 @@ document.addEventListener('List', function() {
         renderCalendar();
     });
 
-    
     renderCalendar();
 
-    
     document.getElementById('html-code').textContent = document.documentElement.outerHTML;
     document.getElementById('css-code').textContent = `
     body {
@@ -60,34 +57,29 @@ document.addEventListener('List', function() {
         flex-direction: column;
         background-color: #f0f0f0;
     }
-    
     #calendar {
         border: 1px solid #ddd;
         padding: 20px;
         background: rgb(110, 110, 110);
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
-    
     #calendar-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
-    
     #calendar-body {
         display: grid;
         grid-template-columns: repeat(7, 1fr);
         grid-gap: 5px;
         margin-top: 10px;
     }
-    
     #calendar-body div {
         padding: 10px;
         background: #f9f9f9;
         text-align: center;
         border: 1px solid #ddd;
     }
-    
     button {
         padding: 5px 10px;
         border: none;
@@ -95,18 +87,15 @@ document.addEventListener('List', function() {
         color: white;
         cursor: pointer;
     }
-    
     button:hover {
         background: #0062b3;
     }
-    
     pre {
         margin-top: 20px;
         width: 90%;
         overflow: auto;
     }
-`;
-
+`;    //CSS kód
     // Zvýraznění syntaxe díky Prism.js
     Prism.highlightAll();
 });
