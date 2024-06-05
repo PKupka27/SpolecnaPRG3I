@@ -9,26 +9,27 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />
 </head>
 <body>
-    >
+    <!-- Kalendář -->
     <div id="calendar">
-        >
+        <!-- Hlavička s tlačítky a zobrazením měsíců -->
         <div id="calendar-header">
             <button id="prev-month">&lt;</button>
             <h2 id="month-year"></h2>
             <button id="next-month">&gt;</button>
         </div>
-        >
+        <!-- Sekce pro zobrazení dnů kalendáře -->
         <div id="calendar-body"></div>
     </div>
 
-    <!-- Zobrazení kódu -->
+    <!-- Zobrazení kódu pomocí Prism.js -->
     <i>Zde je celý kód btw</i>
-    <i><u>HTML</u></i>
+    <u>HTML</u>
     <pre><code class="language-html" id="html-code"></code></pre>
-    <i><u>CSS</u></i>
+    <u>CSS</u>
     <pre><code class="language-css" id="css-code"></code></pre>
+    <u>Javascript</u>
 
-    <!-- Vložení Prism.js API -->
+    <!-- Vložení Prism.js skriptu pro zvýrazňování syntaxe -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
     <script src="script.js"></script>
 </body>
