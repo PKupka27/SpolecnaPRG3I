@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0; /* Barva pozadí */
+}
+
+.calendar-container {
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Stín kolem kalendáře */
+    border-radius: 10px;
+    text-align: center; /* Zarovnání textu do středu */
+}
+
+#current-month-year {
+    margin-bottom: 20px;
+    font-size: 24px; /* Velikost písma pro měsíc a rok */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Sbalení okrajů tabulky */
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd; /* Okraje buňky */
+    text-align: center;
+}
+
+td {
+    height: 50px; /* Výška buňky */
+}
+
+thead {
+    background-color: #f4f4f4; /* Barva pozadí hlavičky tabulky */
+}
