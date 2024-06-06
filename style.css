@@ -3,8 +3,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    height: 150vh;
+    margin: 15;
     background-color: #f0f0f0; /* Barva pozadí */
 }
 
@@ -43,12 +43,15 @@ body {
 table {
     width: 100%;
     border-collapse: collapse; /* Sbalení okrajů tabulky */
+    height: 400px; /* Pevná výška tabulky */
+    overflow-y: auto; /* Přidání vertikálního posuvníku, pokud je obsah příliš velký */
 }
 
 th, td {
     padding: 10px;
     border: 1px solid #ddd; /* Okraje buňky */
     text-align: center;
+    width: 14%; /* Zvýšení šířky sloupců na 14% */
 }
 
 td {
