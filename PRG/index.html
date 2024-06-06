@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aplikace na poznámky</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: "Arial", sans-serif;
+        background-color: #f0f0f5;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+      }
+      h1 {
+        margin-bottom: 20px;
+        color: #4caf50;
+        font-size: 2.5em;
+      }
+      input {
+        padding: 10px;
+        font-size: 16px;
+        width: 300px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: white;
+        margin-bottom: 20px;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+        width: 100%;
+        max-width: 600px;
+      }
+      li {
+        padding: 10px;
+        margin: 5px 0;
+        background-color: #fff;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      li.completed {
+        text-decoration: line-through;
+        color: #aaa;
+      }
+      .remove-btn {
+        background-color: red;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        color: white;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Poznámkový blok</h1>
+    <input type="text" id="taskInput" placeholder="Napiš poznámku" />
+    <button id="addTaskBtn">Přidat poznámku</button>
+    <ul id="taskList"></ul>
+
+    <script src="todo.js"></script>
+  </body>
+</html>
