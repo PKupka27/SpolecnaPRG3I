@@ -14,6 +14,25 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Stín kolem kalendáře */
     border-radius: 10px;
     text-align: center; /* Zarovnání textu do středu */
+    position: relative; /* Přidáno pro správné umístění šipek */
+}
+
+/* Přidání stylů pro šipky */
+#prev-month, #next-month {
+    position: absolute;
+    top: 20px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#prev-month {
+    left: 10px;
+}
+
+#next-month {
+    right: 10px;
 }
 
 #current-month-year {

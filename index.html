@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalendář</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> <!-- Odkaz na externí CSS soubor -->
 </head>
 <body>
     <div class="calendar-container">
-        <h1 id="current-month-year"></h1> 
+        <!-- Přidání šipek pro změnu měsíce -->
+        <button id="prev-month">&lt;</button> 
+        <h1 id="current-month-year"></h1> <!-- Zobrazení aktuálního měsíce a roku -->
+        <button id="next-month">&gt;</button>
         <table id="calendar">
             <thead>
                 <tr>
@@ -29,4 +32,3 @@
     <script src="app.js"></script> <!-- Odkaz na externí JavaScript soubor -->
 </body>
 </html>
-

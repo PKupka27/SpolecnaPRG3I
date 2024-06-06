@@ -1,15 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     const calendarBody = document.getElementById('calendar-body');
     const currentMonthYear = document.getElementById('current-month-year');
-    const currentDate = new Date(); // Vytvoření objektu pro aktuální datum
+    const prevMonthButton = document.getElementById('prev-month'); // Přidáno pro šipku zpět
+    const nextMonthButton = document.getElementById('next-month'); // Přidáno pro šipku vpřed
+    let currentDate = new Date(); // Aktualizováno na let
 
     // Funkce pro získání aktuálního času z API
     function fetchCurrentTime() {
         fetch('http://worldtimeapi.org/api/timezone/Europe/Prague')
             .then(response => response.json()) // Převedení odpovědi na JSON
             .then(data => {
-                const date = new Date(data.datetime); // Vytvoření objektu pro datum z API
-                displayCalendar(date); // Zobrazení kalendáře pro daný datum
+                currentDate = new Date(data.datetime); // Aktualizováno na currentDate
+                displayCalendar(currentDate); // Zobrazení kalendáře pro daný datum
             })
             .catch(error => {
                 console.error('Error fetching time:', error);
@@ -61,6 +63,16 @@ document.addEventListener('DOMContentLoaded', () => {
             calendarBody.appendChild(row); // Přidání řádku do těla tabulky
         }
     }
+
+    // Funkce pro změnu měsíce
+    function changeMonth(offset) {
+        currentDate.setMonth(currentDate.getMonth() + offset); // Změna měsíce podle offsetu
+        displayCalendar(currentDate); // Aktualizace kalendáře
+    }
+
+    // Přidání event listenerů pro šipky
+    prevMonthButton.addEventListener('click', () => changeMonth(-1)); // Změna měsíce zpět
+    nextMonthButton.addEventListener('click', () => changeMonth(1)); // Změna měsíce vpřed
 
     fetchCurrentTime(); // Volání funkce pro získání aktuálního času
 });
