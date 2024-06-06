@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Převodník měn</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="prevodnik">
+        <div id="datum"></div>
+        <h1>PŘEVODNÍK MĚN</h1>
+        
+        <div>
+            <label for="zMen">Z MĚNY</label>
+            <select id="zMen"></select>
+        </div>
+        <div>
+            <label for="castka">ČÁSTKA</label>
+            <input type="number" id="castka">
+        </div>
+        <div>
+            <label for="doMen">DO MĚNY</label>
+            <select id="doMen"></select>
+        </div>
+        <button id="prevest">PŘEVÉST</button>
+        <div id="vysledek"></div>
+        
+        <div class="by">
+             <a>Made by Petr Sochor</a> 
+        </div>
+        
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

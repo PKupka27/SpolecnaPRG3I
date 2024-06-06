@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.prevodnik {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, select {
+    margin-bottom: 10px;
+    padding: 8px;
+    width: calc(100% - 16px);
+    text-align: center;
+}
+
+#zMen{
+    border-width: 2px;
+    border-radius: 10px;
+    width: 100px;
+}
+#doMen{
+    border-width: 2px;
+    border-radius: 10px;
+    width: 100px;
+}
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#vysledek {
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+.by{
+    text-align: right;
+    font-size: 12px;
+    color: darkgrey;
+}
+#datum{
+    text-align: left;
+    font-size: 12px;
+    color: darkgrey;
+}
+
+#castka{
+    border-width: 2px;
+    border-radius: 10px;
+}
